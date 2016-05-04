@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yes|/home/android/bin/clean.sh && yes|/home/android/bin/addToBuild.sh
+source build/envsetup.sh
+brunch $1

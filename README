@@ -1,0 +1,23 @@
+Esse arquivo faz referência à documentação dos scripts "gather.sh", clean.sh e addToBuild.sh
+que DEVERÃO SER RODADOS NO DIRETÓRIO RAIZ DA BUILD (croot)
+(é aconselhável que sejam rodados em uma build original)
+
+O script "gather.sh" busca a localização de todos os arquivos que fazem referência
+a pacotes importantes e não essenciais e os aglutina em um único arquivo (android_packs)
+
+Então, o script "clean.sh" remove dessa lista os pacotes referidos como não necessários
+listados previamente em um arquivo (SECGEN_DEL), observe que ESSE ARQUIVO DEVERÁ SER 
+FORNECIDO POR QUEM FOR RODAR O SCRIPT E DEVERÁ ESTAR NO DIRETÓRIO RAIZ DA BUILD (croot).
+
+Com uma lista de pacotes limpa, o script addToBuild.sh concatena o seu conteúdo no 
+fim do arquivo que estamos usando para adicionar os pacotes da distro (vendor/cm/config/common_full.mk).
+
+
+ARQUIVOS ESSENCIAIS PARA A EXECUÇÃO DO SCRIPT:
+Executáveis (que precisam estar definidos num PATH):
+	- scrip.pl
+	- gather.sh
+	- clean.sh
+	- addToBuild.sh
+
+Lista de pacotes a serem removidos (SECGEN_DEL)
