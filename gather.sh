@@ -8,8 +8,8 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] )
 	case $response in
 			[yY][sS]|[yY]) 
 
-		for i in $(find ./build/ ./vendor/ ./device/ -name *.mk); do grep -le  "^\s*PRODUCT_PACKAGES\s*[:+]=" $i; done > MKS
-		
+		for i in $(find ./build/ ./vendor/ ./device/ -name *.mk); do grep -le  "PRODUCT_PACKAGES\s*[:+]=" $i; done > MKS
+
 		list=$(cat MKS)
 		for i in $(echo $list);
 		do
@@ -19,7 +19,8 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] )
 				\cp $i.bak $i
 			fi
 		done
-		scrip.pl $(echo $list| grep -v .bak)
+
+		scripts/scrip.pl $(echo $list| grep -v .bak)
 
 		sed "s/\s*PRODUCT_PACKAGES\s*[:+]=//g" android_packages_raw | sed s/^"\s"*'\\'*//g | sed /^$/d | sed 's/\([^\\]$\)/\1 \\/g' | sort -u | sed -e '1i\\nPRODUCT_PACKAGES += \\' > android_packs
 		rm -rf android_packages_raw

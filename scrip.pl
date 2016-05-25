@@ -11,30 +11,40 @@ open my $packagefile, '>' , "android_packages_raw" or die "could not create pack
 for (my $i = 0; $i < $num_args; $i++) {
         my $inputfilename = $ARGV[$i];
         my $tempfilename = "/tmp/MAKE$i";
+
         open my $inputfile, '<' , $inputfilename or die "could not open file: $!";
         open my $tempfile, '>' , $tempfilename or die "could not create tempfile $tempfilename: $!";
-        my $flag = 0;
+
+        my $notReadingPackages = 1;
+
         while (my $line = <$inputfile>) {
-                # Se NAO esta listando pacotes
-                if($flag eq 0){
-                        # Se vai começar a listar os pacotes
+                # If it isnt reading packages
+                if($notReadingPackages){
+                        # Started reading packages
                         #if ($line =~ /^[\sP]+RODUCT_PACKAGES\s[:+]=/ ){
                         if ($line =~ /^\s*PRODUCT_PACKAGES\s*[:+]=/ ){
-                                $flag = 1;
+				if ($line =~ /\\\s*$/){
+                                	$notReadingPackages = 0;
+				}
                                 print $tempfile "#".$line;
                                 print $packagefile $line;
                         }
+			# Keep not reading packages
                         else {
                                 print $tempfile $line;
                         }
                 }
-                elsif($flag eq 1){
-                                print $tempfile "#".$line;
-                        if ($line !~ /\\$/){
+		# If it is reading packages
+                else{
+			# Comment out the package from origin
+                        print $tempfile "#".$line;
+			# If it isnt the last package listed
+                        if ($line !~ /\\\s*$/){
                                 chop $line;
                                 print $packagefile "$line \\\n";
-                                        $flag = 0;
+                                $notReadingPackages = 1;
                         }
+			# Get the last package listed
                         else {
                                 print $packagefile $line;
                         }
@@ -46,4 +56,3 @@ for (my $i = 0; $i < $num_args; $i++) {
         move $tempfilename, $inputfilename or WriteLog ("move $tempfilename, $inputfilename failed: $!");
 }
 close $packagefile;
-
