@@ -1,12 +1,12 @@
 #!/bin/bash
 
-read -r -p "Você deseja adicionar a lista de pacotes (SECGEN_PACKS) à build? [y/N] " response
+read -r -p "Você deseja adicionar a lista de pacotes (SECGEN_CLEANPACKS) à build? [y/N] " response
 
 case $response in
         [yY][sS]|[yY]) 
 
-	if ! [ -f ./SECGEN_PACKS ]; then
-        	echo "Não há na pasta raiz da build uma lista de pacotes limpa (SECGEN_PACKS).
+	if ! [ -f ./SECGEN_CLEANPACKS ]; then
+        	echo "Não há na pasta raiz da build uma lista de pacotes limpa (SECGEN_CLEANPACKS).
 		      Por favor, rode o script clean.sh antes dess"
 	        exit 1
 	fi
@@ -16,7 +16,7 @@ case $response in
 	else
 		\cp vendor/cm/config/common_full.mk vendor/cm/config/common_full.mk.original
 	fi
-        cat SECGEN_PACKS >> vendor/cm/config/common_full.mk
+        cat SECGEN_CLEANPACKS >> vendor/cm/config/common_full.mk
         ;;
     *)
         exit

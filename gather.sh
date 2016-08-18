@@ -3,7 +3,7 @@
 if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] )
 	then
 
-	read -r -p "Você deseja aglutinar a lista de pacotes em um arquivo (SECGEN_PACKS)? [y/N] " response
+	read -r -p "Você deseja aglutinar a lista de pacotes em um arquivo (android_packs)? [y/N] " response
 
 	case $response in
 			[yY][sS]|[yY]) 

@@ -10,7 +10,7 @@ case $response in
 	fi
 
         sed 's/\([^\\]$\)/\1 \\\\/g' SECGEN_DEL > tmpdel
-        egrep -v -x -f tmpdel android_packs > SECGEN_PACKS
+        egrep -v -x -f tmpdel android_packs > SECGEN_CLEANPACKS
         ;;
     *)
         exit
