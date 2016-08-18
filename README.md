@@ -7,7 +7,6 @@ Copy all scripts to the build root.
 
 Run gather.sh so it generates the android_packs file.
 
-Run clean.sh. It will remove from android_packs all files on SECGEN_DEL
+Run clean.sh. It will remove from android_packs all files on SECGEN_DEL and store then on SECGEN_CLEANPACKS.
 
-Run catToBuild.sh. It will return the cleaned packs, stored on CLEAN_PACKS, to the build.  
-
+Run catToBuild.sh. It will return the cleaned packs, stored on SECGEN_CLEANPACKS, to the build.
