@@ -13,6 +13,7 @@ if [ -d "$cmHome" ]; then
 			[Yy]* ) echo "Removing old one..."
 				rm -rf $cmHome
 				echo "Done."
+				echo "Old build removed."
 				mkdir -p $cmHome
 				break;;
 			[Nn]* ) exit;;
@@ -20,9 +21,12 @@ if [ -d "$cmHome" ]; then
 		esac
 	done
 else
-	mkdir -p $dir/cm13.0
+	echo "Starting new build..."	
+	mkdir -p $cmHome
 fi
 
 cd $cmHome
 repo init -u https://github.com/CyanogenMod/android.git -b cm-13.0
 repo sync
+echo "Done."
+echo "New build started at $cmHome."
