@@ -14,6 +14,7 @@ if [ -d "$cmHome" ]; then
 				rm -rf $cmHome
 				echo "Done."
 				echo "Old build removed."
+				echo "Starting new build..."
 				mkdir -p $cmHome
 				break;;
 			[Nn]* ) exit;;
