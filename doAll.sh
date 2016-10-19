@@ -12,5 +12,5 @@ securegen="$(dirname "$(pwd)")"
 
 bash newBuild.sh
 (cd $securegen/visualId; bash replaceId.sh)
-(cd $securegen/apps/; bash addPacks.sh)
+bash addPacks.sh
 (cd $securegen/blobs/; bash addBlobs.sh)
