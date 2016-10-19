@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
-if [ -z ${cmHome+x} ]; then 
+if [ -z ${cmHome+x} ]; then
 	read -p "Where do you want to start the build: " -e dir
-	cmHome=$dir/cm13.0 
+	cmHome=$dir/cm13.0
 fi
 
 if [ -d "$cmHome" ]; then
@@ -17,12 +17,12 @@ if [ -d "$cmHome" ]; then
 				echo "Starting new build..."
 				mkdir -p $cmHome
 				break;;
-			[Nn]* ) exit;;
+			[Nn]* ) exit 0;;
 			* ) echo "Please answer yes or no.";;
 		esac
 	done
 else
-	echo "Starting new build..."	
+	echo "Starting new build..."
 	mkdir -p $cmHome
 fi
 
