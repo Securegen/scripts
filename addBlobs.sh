@@ -38,8 +38,8 @@ if [ ! -d "$securenBlobs/proprietary_vendor_asus" ]; then
 	echo "Done."
 fi
 
-
 cd $cmHome
+echo "Preparing to add blobs..."
 source build/envsetup.sh
 
 #LG Blobs
