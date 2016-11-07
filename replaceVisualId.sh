@@ -9,7 +9,7 @@ visualId=$securegen/visualId
 if [ ! -d "$visualId" ]; then
         echo "Missing visualId repo."
         echo "Downloading..."
-        git clone git@github.com:Securegen/visualId.git $visualId
+        git clone https://github.com/Securegen/visualId.git $visualId
 fi
 
 cmWallpaper=$cmHome/vendor/cm/overlay/common/frameworks/base/core/res/res
