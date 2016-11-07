@@ -6,7 +6,7 @@ securegen="$(dirname "$(pwd)")"
 securegenBlobs=$securegen/blobs
 
 #Check if the blobs are present
-if [ ! -d "$securegenBlobs"]; then
+if [ ! -d "$securegenBlobs" ]; then
 	mkdir $securegenBlobs
 fi
 
