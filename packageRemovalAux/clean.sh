@@ -10,12 +10,12 @@ fi
 
 case $response in
         [yY][sS]|[yY])
-	if ! [ -f ./SECGEN_DEL ]; then
+	if ! [ -f `dirname $0`/SECGEN_DEL ]; then
 		echo "Não há na pasta raiz da build uma lista de remoções de pacotes (SCGEN_DEL)"
         	exit 1
 	fi
 
-        sed 's/\([^\\]$\)/\1 \\\\/g' SECGEN_DEL > tmpdel
+        sed 's/\([^\\]$\)/\1 \\\\/g' `dirname $0`/SECGEN_DEL > tmpdel
         egrep -v -x -f tmpdel android_packs > SECGEN_CLEANPACKS
         ;;
     *)
