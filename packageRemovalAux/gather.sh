@@ -1,12 +1,17 @@
 #!/bin/bash
 
-if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] )
-	then
+if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 
-	read -r -p "Você deseja aglutinar a lista de pacotes em um arquivo (android_packs)? [y/N] " response
+	if [ "$1" = "-y" ] || [ "$1" = "-Y" ]; then 
+		response="y"
+	elif [ "$1" = "-n" ] || [ "$1" = "-N" ]; then
+		response="N"
+	else
+		read -r -p "Você deseja aglutinar a lista de pacotes em um arquivo (android_packs)? [y/N] " response
+	fi
 
 	case $response in
-			[yY][sS]|[yY]) 
+		[yY][sS]|[yY]) 
 
 		for i in $(find ./build/ ./vendor/ ./device/ -name *.mk); do grep -le  "PRODUCT_PACKAGES\s*[:+]=" $i; done > MKS
 

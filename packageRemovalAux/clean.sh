@@ -1,6 +1,12 @@
 #!/bin/bash
 
-read -r -p "Você deseja remover da lista de pacotes os pacotes de remoção (SECGEN_DEL)? [y/N] " response
+if [ "$1" = "-y" ] || [ "$1" = "-Y" ]; then 
+	response="y"
+elif [ "$1" = "-n" ] || [ "$1" = "-N" ]; then
+	response="N"
+else
+	read -r -p "Você deseja remover da lista de pacotes os pacotes de remoção (SECGEN_DEL)? [y/N] " response
+fi
 
 case $response in
         [yY][sS]|[yY])
