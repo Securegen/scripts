@@ -67,6 +67,13 @@ breakfast peregrine
 echo "Done."
 echo "peregrine has been added."
 
+echo "Adding osprey..."
+breakfast osprey
+cp -R $securegenBlobs/motorola/osprey $cmVendor/motorola
+breakfast osprey
+echo "Done."
+echo "osprey has been added."
+
 echo "Adding surnia..."
 breakfast surnia
 cp -R $securegenBlobs/motorola/msm8916-common $cmVendor/motorola
