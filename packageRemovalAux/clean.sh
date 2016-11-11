@@ -5,13 +5,13 @@ if [ "$1" = "-y" ] || [ "$1" = "-Y" ]; then
 elif [ "$1" = "-n" ] || [ "$1" = "-N" ]; then
 	response="N"
 else
-	read -r -p "Você deseja remover da lista de pacotes os pacotes de remoção (SECGEN_DEL)? [y/N] " response
+	read -r -p "Do you wish to remove selected packs (SECGEN_DEL) from the package list? [y/N] " response
 fi
 
 case $response in
         [yY][sS]|[yY])
 	if ! [ -f `dirname $0`/SECGEN_DEL ]; then
-		echo "Não há na pasta raiz da build uma lista de remoções de pacotes (SCGEN_DEL)"
+		echo "Missing SECGEN_DEL."
         	exit 1
 	fi
 
@@ -23,7 +23,7 @@ case $response in
         ;;
 esac
 
-echo "Os pacotes foram removidos da lista."
+echo "Packs removed successfully."
 
 rm -rf tmpdel
 

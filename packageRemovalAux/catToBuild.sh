@@ -5,15 +5,14 @@ if [ "$1" = "-y" ] || [ "$1" = "-Y" ]; then
 elif [ "$1" = "-n" ] || [ "$1" = "-N" ]; then
 	response="N"
 else
-	read -r -p "Você deseja adicionar a lista de pacotes (SECGEN_CLEANPACKS) à build? [y/N] " response
+	read -r -p "Do you wish to add the packages list (SECGEN_CLEANPACKS) to the build? [y/N] " response
 fi
 
 case $response in
         [yY][sS]|[yY]) 
 
 	if ! [ -f ./SECGEN_CLEANPACKS ]; then
-        	echo "Não há na pasta raiz da build uma lista de pacotes limpa (SECGEN_CLEANPACKS).
-		      Por favor, rode o script clean.sh antes dess"
+        	echo "Missing SECGEN_CLEANPACKS. Run clena.sh first."
 	        exit 1
 	fi
 
@@ -29,6 +28,6 @@ case $response in
         ;;
 esac
 
-echo "Os pacotes foram inseridos na build."
+echo "Package list included successfully."
 
 exit

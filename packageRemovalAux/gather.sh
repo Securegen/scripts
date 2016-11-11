@@ -7,7 +7,7 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 	elif [ "$1" = "-n" ] || [ "$1" = "-N" ]; then
 		response="N"
 	else
-		read -r -p "Você deseja aglutinar a lista de pacotes em um arquivo (android_packs)? [y/N] " response
+		read -r -p "Do you wish to gather the packs list on a single file (android_packs)? [y/N] " response
 	fi
 
 	case $response in
@@ -32,7 +32,7 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 
 		rm -rf /tmp/MAKE*
 
-		echo "PRONTO"
+		echo "Done."
 
 		;;
 	*)
@@ -40,6 +40,6 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 		;;
 	esac
 
-	else
-		echo "Você não se encontra em um ambiente de compilação"
+else
+	echo "You are on the wrong dir. Run the script inside the build dir."
 fi
