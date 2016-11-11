@@ -17,7 +17,8 @@ if [ -d "$cmHome" ]; then
 				echo "Starting new build..."
 				mkdir -p $cmHome
 				break;;
-			[Nn]* ) exit 0;;
+			[Nn]* ) echo "Exiting..."
+				exit 0;;
 			* ) echo "Please answer yes or no.";;
 		esac
 	done

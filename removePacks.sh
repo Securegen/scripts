@@ -1,7 +1,13 @@
 #!/bin/bash -e
 
 if [ -z ${cmHome+x} ]; then
-	read -p "Enter the path to the build dir: " -e cmHome;
+	while true; do
+		read -p "Enter the path to the build dir: " -e cmHome;
+		if ( [[ -d $cmHome/build ]]; [[ -d $cmHome/android ]]; [[ -d $cmHome/.repo ]] ) then
+			break;
+		fi
+		echo "Not a build dir. Try again."
+	done
 fi
 
 securegen="$(dirname "$(pwd)")"
