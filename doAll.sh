@@ -15,3 +15,4 @@ bash removePacks.sh
 bash replaceVisualId.sh
 bash addPacks.sh
 bash addBlobs.sh
+bash buildAll.sh
