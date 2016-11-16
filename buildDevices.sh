@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 ##Functions##
-
 #LG devices
 Build_d855 (){
 
@@ -70,6 +69,8 @@ Build_Z00A (){
 	echo "Z00A has been built."
 }
 
+##SNOITCNUF##
+
 if [ -z ${cmHome+x} ]; then
 	while true; do
 		read -p "Enter the path to the build dir: " -e cmHome;
@@ -81,11 +82,12 @@ if [ -z ${cmHome+x} ]; then
 fi
 
 cd $cmHome
-echo "Preparing to build all devices..."
+echo "Preparing to build..."
 source build/envsetup.sh
 
 
 if [ $# -eq 0 ]; then
+	echo "Building all devices..."
 
 	#LG devices
 	echo "Bulding LG devices..."
@@ -110,7 +112,11 @@ if [ $# -eq 0 ]; then
 	echo "Building Asus devices..."
 	Build_Z00A
 	echo "All Asus devices have been built."
+
+	echo "All done."
 else
+	echo "Building $@..."
+
 	#LG devices
 	if [$@ == *"LG"*]; then
 		echo "Bulding LG devices..."
@@ -174,4 +180,6 @@ else
 			Build_Z00A
 		fi
 	fi
+
+	echo "All done."
 fi
