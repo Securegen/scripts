@@ -101,7 +101,7 @@ echo "All Motorola blobs have been added."
 
 #Samsung Blobs
 echo "Adding Samsung blobs..."
-mkdir -p $cmVendor/samsunsg
+mkdir -p $cmVendor/samsung
 
 echo "Adding klte..."
 breakfast klte
