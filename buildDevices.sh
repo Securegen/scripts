@@ -118,18 +118,18 @@ else
 	echo "Building $@..."
 
 	#LG devices
-	if [$@ == *"LG"*]; then
+	if [[ "$@" == *"LG"* ]]; then
 		echo "Bulding LG devices..."
 		Build_d855
 		echo "All LG devices have been built."
 	else
-		if [$@ == *"d855"*]; then
+		if [[ "$@" == *"d855"* ]]; then
 			Build_d855
 		fi
 	fi
 
 	#Motorola devices
-	if [$@ == *"Motorola"*]; then
+	if [[ "$@" == *"Motorola"* ]]; then
 		echo "Building Motorola devices..."
 		Build_peregrine
 		Build_osprey
@@ -137,46 +137,46 @@ else
 		Build_victara
 		echo "All Motorola devices have been built."
 	else
-		if [$@ == *"peregrine"*]; then
+		if [[ "$@" == *"peregrine"* ]]; then
 			Build_peregrine
 		fi
 
-		if [$@ == *"osprey"*]; then
+		if [[ "$@" == *"osprey"* ]]; then
 			Build_osprey
 		fi
 
-		if [$@ == *"surnia"*]; then
+		if [[ "$@" == *"surnia"* ]]; then
 			Build_surnia
 		fi
 
-		if [$@ == *"victara"*]; then
+		if [[ "$@" == *"victara"* ]]; then
 			Build_victara
 		fi
 	fi
 
 	#Samsung devices
-	if [$@ == *"Samsung"*]; then
+	if [[ "$@" == *"Samsung"* ]]; then
 		echo "Building Samsung devices..."
 		Build_klte
 		Build_i9300
 		echo "All Samsung devices have been built."
 	else
-		if [$@ == *"klte"*]; then
+		if [[ "$@" == *"klte"* ]]; then
 			Build_klte
 		fi
 
-		if [$@ == *"i9300"*]; then
+		if [[ "$@" == *"i9300"* ]]; then
 			Build_i9300
 		fi
 	fi
 
 	#Asus devices
-	if [$@ == *"Asus"*]; then
+	if [[ "$@" == *"Asus"* ]]; then
 		echo "Building Asus devices..."
 		Build_Z00A
 		echo "All Asus devices have been built."
 	else
-		if [$@ == *"Z00A"*]; then
+		if [[ "$@" == *"Z00A"* ]]; then
 			Build_Z00A
 		fi
 	fi
