@@ -1,8 +1,13 @@
 #!/bin/bash -e
 
 if [ -z ${cmHome+x} ]; then
-	read -p "Where do you want to start the build: " -e dir
-	cmHome=$dir/cm13.0
+	if [ ! -z "$1" ]; then
+		export cmHome=$1/cm13.0
+		echo "A new build will be started on $cmHome"
+	else
+		read -p "Where do you want to start the build: " -e dir
+		cmHome=$dir/cm13.0
+	fi
 fi
 
 if [ -d "$cmHome" ]; then

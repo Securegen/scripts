@@ -8,11 +8,9 @@ else
 	export cmHome=$dir/cm13.0
 fi
 
-securegen="$(dirname "$(pwd)")"
-
 bash newBuild.sh
 bash removePacks.sh
 bash replaceVisualId.sh
 bash addPacks.sh
 bash addBlobs.sh
-bash buildDevices.sh
+bash buildDevices.sh ${@:2}

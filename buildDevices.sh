@@ -3,7 +3,6 @@
 ##Functions##
 #LG devices
 Build_d855 (){
-
 	echo "Building d855..."
 	brunch d855
 	echo "Done."
@@ -12,7 +11,6 @@ Build_d855 (){
 
 #Motorola devices
 Build_peregrine (){
-
 	echo "Building peregrine..."
 	brunch peregrine
 	echo "Done."
@@ -20,7 +18,6 @@ Build_peregrine (){
 }
 
 Build_osprey (){
-
 	echo "Building osprey..."
 	brunch osprey
 	echo "Done."
@@ -28,7 +25,6 @@ Build_osprey (){
 }
 
 Build_surnia (){
-
 	echo "Building surnia..."
 	brunch surnia
 	echo "Done."
@@ -36,7 +32,6 @@ Build_surnia (){
 }
 
 Build_victara (){
-
 	echo "Building victara..."
 	brunch victara
 	echo "Done."
@@ -45,7 +40,6 @@ Build_victara (){
 
 #Samsung devices
 Build_klte (){
-
 	echo "Building klte..."
 	brunch klte
 	echo "Done."
@@ -53,7 +47,6 @@ Build_klte (){
 }
 
 Build_i9300 (){
-
 	echo "Building i9300..."
 	brunch i9300
 	echo "Done."
@@ -62,7 +55,6 @@ Build_i9300 (){
 
 #Asus devices
 Build_Z00A (){
-
 	echo "Building Z00A..."
 	brunch Z00A
 	echo "Done."
