@@ -64,13 +64,18 @@ Build_Z00A (){
 ##SNOITCNUF##
 
 if [ -z ${cmHome+x} ]; then
-	while true; do
-		read -p "Enter the path to the build dir: " -e cmHome;
-		if ( [[ -d $cmHome/build ]]; [[ -d $cmHome/android ]]; [[ -d $cmHome/.repo ]] ) then
-			break;
-		fi
-		echo "Not a build dir. Try again."
-	done
+	if ( [[ ! -z "$1" ]]; [[ -d $1/build ]]; [[ -d $1/android ]]; [[ -d $1/.repo ]] ) then
+		cmHome=$1
+		shift
+	else	
+		while true; do
+			read -p "Enter the path to the build dir: " -e cmHome;
+			if ( [[ -d $cmHome/build ]]; [[ -d $cmHome/android ]]; [[ -d $cmHome/.repo ]] ) then
+				break;
+			fi
+			echo "Not a build dir. Try again."
+		done
+	fi
 fi
 
 cd $cmHome
@@ -105,7 +110,7 @@ if [ $# -eq 0 ]; then
 	Build_Z00A
 	echo "All Asus devices have been built."
 
-	echo "All done."
+	echo "All devices have been built."
 else
 	echo "Building $@..."
 
@@ -173,5 +178,5 @@ else
 		fi
 	fi
 
-	echo "All done."
+	echo "All select devices have been built."
 fi
