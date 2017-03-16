@@ -39,6 +39,7 @@ securegenAnimation=$visualId/bootanimation
 echo "Replacing boot anination..."
 yes | cp -rf $securegenAnimation/bootanimation.tar $cmAnimation
 yes | cp -rf $securegenAnimation/desc.txt $cmAnimation
+yes | cp -rf $securegenAnimation/generate-bootanimation.sh $cmAnimation
 echo "Done."
 
 cmTrebuchet=$cmHome/packages/apps/Trebuchet
