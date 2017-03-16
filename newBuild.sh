@@ -2,11 +2,11 @@
 
 if [ -z ${cmHome+x} ]; then
 	if [ ! -z "$1" ]; then
-		export cmHome=$1/cm13.0
+		export cmHome=$1/cm14.1
 		echo "A new build will be started on $cmHome"
 	else
 		read -p "Where do you want to start the build: " -e dir
-		cmHome=$dir/cm13.0
+		cmHome=$dir/cm14.1
 	fi
 fi
 
@@ -33,7 +33,7 @@ else
 fi
 
 cd $cmHome
-repo init -u https://github.com/CyanogenMod/android.git -b cm-13.0
+repo init -u https://github.com/LineageOS/android.git -b cm-14.1
 repo sync
 echo "Done."
 echo "New build started at $cmHome."

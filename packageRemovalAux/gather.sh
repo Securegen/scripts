@@ -1,5 +1,7 @@
 #!/bin/bash
 
+BASEDIR=$(dirname "$0")
+
 if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 
 	if [ "$1" = "-y" ] || [ "$1" = "-Y" ]; then 
@@ -25,7 +27,7 @@ if ( [[ -d ./build ]]; [[ -d ./android ]]; [[ -d ./.repo ]] ) then
 			fi
 		done
 
-		scrip.pl $(echo $list| grep -v .bak)
+		perl $BASEDIR/scrip.pl $(echo $list| grep -v .bak)
 
 		sed "s/\s*PRODUCT_PACKAGES\s*[:+]=//g" android_packages_raw | sed s/^"\s"*'\\'*//g | sed /^$/d | sed 's/\([^\\]$\)/\1 \\/g' | sort -u | sed -e '1i\\nPRODUCT_PACKAGES += \\' > android_packs
 		rm -rf android_packages_raw

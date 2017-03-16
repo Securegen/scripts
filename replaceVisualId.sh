@@ -24,23 +24,21 @@ cmWallpaper=$cmHome/vendor/cm/overlay/common/frameworks/base/core/res/res
 securegenWallpaper=$visualId/wallpapers
 
 echo "Replacing wallpapers..."
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-sw720dp-nodpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-hdpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-xhdpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-xxxhdpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-xxhdpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-sw600dp-nodpi/
-yes | cp -rf $securegenWallpaper/default_wallpaper.jpg $cmWallpaper/drawable-nodpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-sw720dp-nodpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-hdpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-xhdpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-xxxhdpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-xxhdpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-sw600dp-nodpi/
+yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-nodpi/
 echo "Done."
 
-cmAnimation=$cmHome/vendor/cm/prebuilt/common/bootanimation
+cmAnimation=$cmHome/vendor/cm/bootanimation
 securegenAnimation=$visualId/bootanimation
 
 echo "Replacing boot anination..."
-yes | cp -rf $securegenAnimation/* $cmAnimation
-rm -rf $cmAnimation/halfres/*.zip
-cd $cmAnimation/halfres
-sh $cmAnimation/halfres/generate-half-res-anims.sh
+yes | cp -rf $securegenAnimation/bootanimation.tar $cmAnimation
+yes | cp -rf $securegenAnimation/desc.txt $cmAnimation
 echo "Done."
 
 cmTrebuchet=$cmHome/packages/apps/Trebuchet

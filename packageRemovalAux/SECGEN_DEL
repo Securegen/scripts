@@ -33,7 +33,6 @@ libjni_pinyinime
 LiveWallpapers
 LiveWallpapersPicker
 MagicSmokeWallpapers
-Music
 NoiseField
 OneTimeInitializer
 OpenWnn
@@ -43,7 +42,6 @@ PicoTts
 PinyinIME
 QuickSearchBox
 SdkSetup
-SoftKeyboard
 TestingCamera
 ThemeChooser
 ThemesProvider
@@ -60,3 +58,11 @@ ThemeManagerService
 AudioFX
 fingerprint.goldfish
 fingerprint.ranchu
+LiveTv
+TvSettings
+TV
+tv_input.default
+TvProvider
+com.android.media.tv.remoteprovider
+com.android.media.tv.remoteprovider.xml
+
