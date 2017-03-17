@@ -22,13 +22,11 @@ emulator-x86
 Galaxy4
 HoloSpiralWallpaper
 HTMLViewer
-LatinIME
 Launcher2
 libcyanogen-dsp
 libGLES_CM_translator
 libGLESv1_CM
 libGLESv1_CM_emulation
-libjni_latinime
 libjni_pinyinime
 LiveWallpapers
 LiveWallpapersPicker
@@ -65,3 +63,4 @@ tv_input.default
 TvProvider
 com.android.media.tv.remoteprovider
 com.android.media.tv.remoteprovider.xml
+SoftKeyboard
