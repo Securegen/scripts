@@ -33,7 +33,21 @@ else
 fi
 
 cd $cmHome
+echo "Initiating repo sync - `date +%D` `date +%T`" | tee -a log.txt
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1
-repo sync
-echo "Done."
-echo "New build started at $cmHome."
+
+for i in {0..5}; do
+	repo sync
+	if [ $? = 0 ]; then
+		echo -e "Repo sync completed - `date +%D` `date +%T`\n" | tee -a log.txt
+		echo "New build started at $cmHome."
+		exit 0
+	fi
+	echo -e "\tRepo sync failed - `date +%D` `date +%T`" | tee -a log.txt
+	if [ $i -lt 5 ]; then
+		echo -e "\tTrying repo sync again- `date +%D` `date +%T`" | tee -a log.txt
+	fi
+done
+
+echo "Exiting due too many fails - `date +%D` `date +%T`\n" | tee -a log.txt
+exit 1
