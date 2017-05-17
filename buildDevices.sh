@@ -1,73 +1,40 @@
 #!/bin/bash -e
 
+##VARS##
+lg=('d855')
+motorola=('peregrine' 'osprey' 'surnia' 'victara')
+samsung=('klte' 'i9300')
+asus=('Z00A')
+builtDevices=""
+##SRAV##
+
 ##Functions##
-#LG devices
-Build_d855 (){
-	echo "Building d855..."
-	brunch d855
-	echo "Done."
-	echo "d855 has been built."
+Build_device (){
+	echo -e  "\tBuilding for $1 - `date +%x` `date +%T`" | tee -a log.txt
+	brunch $1
+	if [ $? -eq 0 ]; then
+		echo "Done."
+		echo -e "\tBuild for $1 completed - `date +%x` `date +%T`" | tee -a log.txt
+	else
+		echo -e "\tError building for $1 - `date +%x` `date +%T`" | tee -a log.txt
+	fi
+	builtDevices="$builtDevices $1"
 }
 
-#Motorola devices
-Build_peregrine (){
-	echo "Building peregrine..."
-	brunch peregrine
-	echo "Done."
-	echo "peregrine has been built."
+Build_brand (){
+	echo "Building Securegen for $1 devices - `date +%x` `date +%T`" | tee -a log.txt
+	for device in "${@:2}"; do
+                Build_device $device
+	done
+	echo "Finished building for all $1 devices - `date +%x` `date +%T`" | tee -a log.txt
 }
-
-Build_osprey (){
-	echo "Building osprey..."
-	brunch osprey
-	echo "Done."
-	echo "osprey has been built."
-}
-
-Build_surnia (){
-	echo "Building surnia..."
-	brunch surnia
-	echo "Done."
-	echo "surnia has been built."
-}
-
-Build_victara (){
-	echo "Building victara..."
-	brunch victara
-	echo "Done."
-	echo "victara has been built."
-}
-
-#Samsung devices
-Build_klte (){
-	echo "Building klte..."
-	brunch klte
-	echo "Done."
-	echo "klte has been built."
-}
-
-Build_i9300 (){
-	echo "Building i9300..."
-	brunch i9300
-	echo "Done."
-	echo "i9300 has been built."
-}
-
-#Asus devices
-Build_Z00A (){
-	echo "Building Z00A..."
-	brunch Z00A
-	echo "Done."
-	echo "Z00A has been built."
-}
-
 ##SNOITCNUF##
 
 if [ -z ${cmHome+x} ]; then
 	if ( [[ ! -z "$1" ]]; [[ -d $1/build ]]; [[ -d $1/android ]]; [[ -d $1/.repo ]] ) then
 		cmHome=$1
 		shift
-	else	
+	else
 		while true; do
 			read -p "Enter the path to the build dir: " -e cmHome;
 			if ( [[ -d $cmHome/build ]]; [[ -d $cmHome/android ]]; [[ -d $cmHome/.repo ]] ) then
@@ -82,101 +49,33 @@ cd $cmHome
 echo "Preparing to build..."
 source build/envsetup.sh
 
-
 if [ $# -eq 0 ]; then
-	echo "Building all devices..."
-
-	#LG devices
-	echo "Bulding LG devices..."
-	Build_d855
-	echo "All LG devices have been built."
-
-	#Motorola devices
-	echo "Building Motorola devices..."
-	Build_peregrine
-	Build_osprey
-	Build_surnia
-	Build_victara
-	echo "All Motorola devices have been built."
-
-	#Samsung devices
-	echo "Building Samsung devices..."
-	Build_klte
-	Build_i9300
-	echo "All Samsung devices have been built."
-
-	#Asus devices
-	echo "Building Asus devices..."
-	Build_Z00A
-	echo "All Asus devices have been built."
-
-	echo "All devices have been built."
+	echo "Building Securegen for all devices - `date +%x` `date +%T`" | tee -a log.txt
+	Build_brand "LG" ${lg[@]}
+	Build_brand "Motorola" ${motorola[@]}
+	Build_brand "Samsung" ${samsung[@]}
+	Build_brand "Asus" ${asus[@]}
+	echo -e "Finished building for all devices - `date +%x` `date +%T`\n" | tee -a log.txt
 else
-	echo "Building $@..."
-
-	#LG devices
-	if [[ "$@" == *"LG"* ]]; then
-		echo "Bulding LG devices..."
-		Build_d855
-		echo "All LG devices have been built."
-	else
-		if [[ "$@" == *"d855"* ]]; then
-			Build_d855
-		fi
+	echo "Building Securegen for $@ - `date +%x` `date +%T`" | tee -a log.txt
+	input="$@"
+	if input="${input//LG/ }"; then
+		Build_brand "LG" ${lg[@]}
 	fi
-
-	#Motorola devices
-	if [[ "$@" == *"Motorola"* ]]; then
-		echo "Building Motorola devices..."
-		Build_peregrine
-		Build_osprey
-		Build_surnia
-		Build_victara
-		echo "All Motorola devices have been built."
-	else
-		if [[ "$@" == *"peregrine"* ]]; then
-			Build_peregrine
-		fi
-
-		if [[ "$@" == *"osprey"* ]]; then
-			Build_osprey
-		fi
-
-		if [[ "$@" == *"surnia"* ]]; then
-			Build_surnia
-		fi
-
-		if [[ "$@" == *"victara"* ]]; then
-			Build_victara
-		fi
+	if input="${input//Motorola/ }"; then
+		Build_brand "Motorola" ${motorola[@]}
 	fi
-
-	#Samsung devices
-	if [[ "$@" == *"Samsung"* ]]; then
-		echo "Building Samsung devices..."
-		Build_klte
-		Build_i9300
-		echo "All Samsung devices have been built."
-	else
-		if [[ "$@" == *"klte"* ]]; then
-			Build_klte
-		fi
-
-		if [[ "$@" == *"i9300"* ]]; then
-			Build_i9300
-		fi
+	if input="${input//Samsung/ }"; then
+	        Build_brand "Samsung" ${samsung[@]}
 	fi
-
-	#Asus devices
-	if [[ "$@" == *"Asus"* ]]; then
-		echo "Building Asus devices..."
-		Build_Z00A
-		echo "All Asus devices have been built."
-	else
-		if [[ "$@" == *"Z00A"* ]]; then
-			Build_Z00A
-		fi
+	if input="${input//Asus/ }"; then
+	       	Build_brand "Asus" ${asus[@]}
 	fi
-
-	echo "All select devices have been built."
+	IFS=' ' read -r -a remainingDevices <<< "$input"
+	for device in "$remainingDevices"; do
+		if [[ $builtDevices != *$device* ]]; then
+			Build_device $device
+		fi
+	done
+	echo -e "All select devices have been built - `date +%x` `date +%T`\n" | tee -a log.txt
 fi
