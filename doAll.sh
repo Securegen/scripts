@@ -1,11 +1,11 @@
 #!/bin/bash -e
 
 if [ ! -z "$1" ]; then
-	export cmHome=$1/cm13.0
+	export cmHome=$1/cm14.1
 	echo "A new build will be started on $cmHome"
 else
 	read -p "Where do you want to start the build: " -e dir
-	export cmHome=$dir/cm13.0
+	export cmHome=$dir/cm14.1
 fi
 
 bash newBuild.sh
