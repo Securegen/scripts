@@ -32,9 +32,14 @@ else
 	mkdir -p $cmHome
 fi
 
+securegen="$(dirname "$(pwd)")"
 cd $cmHome
 echo "Initiating repo sync - `date +%x` `date +%T`" | tee -a log.txt
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1
+
+#Add FDroidPrivilegedExtension repo
+mkdir $cmHome/.repo/local_manifests/
+cp $securegen/scripts/manifests/FDroidPrivilegedExtension.xml $cmHome/.repo/local_manifests/
 
 for i in {0..5}; do
 	repo sync
