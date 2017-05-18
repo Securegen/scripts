@@ -76,6 +76,13 @@ breakfast peregrine
 echo "Done."
 echo "peregrine has been added."
 
+echo "Adding falcon..."
+breakfast falcon
+cp -n -R $securegenBlobs/proprietary_vendor_motorola/falcon $cmVendor/motorola
+breakfast falcon
+echo "Done."
+echo "falcon has been added."
+
 echo "Adding osprey..."
 breakfast osprey
 cp -n -R $securegenBlobs/proprietary_vendor_motorola/osprey $cmVendor/motorola
@@ -90,6 +97,13 @@ cp -n -R $securegenBlobs/proprietary_vendor_motorola/surnia $cmVendor/motorola
 breakfast surnia
 echo "Done."
 echo "surnia has been added."
+
+echo "Adding harpia..."
+breakfast harpia
+cp -n -R $securegenBlobs/proprietary_vendor_motorola/harpia $cmVendor/motorola
+breakfast harpia
+echo "Done."
+echo "harpia has been added."
 
 echo "Adding victara..."
 breakfast victara

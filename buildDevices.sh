@@ -2,7 +2,7 @@
 
 ##VARS##
 lg=('d855')
-motorola=('peregrine' 'osprey' 'surnia' 'victara')
+motorola=('peregrine' 'osprey' 'surnia' 'victara' 'harpia' 'falcon')
 samsung=('klte' 'i9300')
 asus=('Z00A')
 builtDevices=""
