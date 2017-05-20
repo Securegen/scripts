@@ -64,3 +64,8 @@ TvProvider
 com.android.media.tv.remoteprovider
 com.android.media.tv.remoteprovider.xml
 SoftKeyboard
+Calendar
+CalendarProvider
+LineageSetupWizard
+LeanbackSampleApp
+EmulatorSmokeTests
