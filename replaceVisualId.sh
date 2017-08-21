@@ -11,17 +11,8 @@ if [ -z ${cmHome+x} ]; then
 fi
 
 securegen="$(dirname "$(pwd)")"
-visualId=$securegen/visualId
-
-#Check if the visualId repo is present
-if [ ! -d "$visualId" ]; then
-        echo "Missing visualId repo."
-        echo "Downloading..."
-        git clone https://github.com/Securegen/visualId.git $visualId
-fi
-
 cmWallpaper=$cmHome/vendor/cm/overlay/common/frameworks/base/core/res/res
-securegenWallpaper=$visualId/wallpapers
+securegenWallpaper=visualId/wallpapers
 
 echo "Replacing wallpapers..."
 yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-sw720dp-nodpi/
@@ -34,7 +25,7 @@ yes | cp -rf $securegenWallpaper/default_wallpaper.png $cmWallpaper/drawable-nod
 echo "Done."
 
 cmAnimation=$cmHome/vendor/cm/bootanimation
-securegenAnimation=$visualId/bootanimation
+securegenAnimation=visualId/bootanimation
 
 echo "Replacing boot anination..."
 yes | cp -rf $securegenAnimation/bootanimation.tar $cmAnimation
@@ -43,7 +34,7 @@ yes | cp -rf $securegenAnimation/generate-bootanimation.sh $cmAnimation
 echo "Done."
 
 cmTrebuchet=$cmHome/packages/apps/Trebuchet
-securegenTrebuchet=$visualId/trebuchet/
+securegenTrebuchet=visualId/trebuchet/
 
 cd $visualId
 echo "Adjusting Trebuchet..."
