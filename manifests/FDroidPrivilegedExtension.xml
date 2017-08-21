@@ -4,7 +4,7 @@
   <remote name="fdroid" fetch="https://gitlab.com/fdroid/" />
   <project path="packages/apps/FDroidPrivilegedExtension"
            name="privileged-extension.git" remote="fdroid"
-           revision="refs/tags/0.2.5" />
+           revision="master" />
 
 </manifest>
 
