@@ -34,9 +34,8 @@ yes | cp -rf $securegenAnimation/generate-bootanimation.sh $cmAnimation
 echo "Done."
 
 cmTrebuchet=$cmHome/packages/apps/Trebuchet
-securegenTrebuchet=visualId/trebuchet/
+securegenTrebuchet=visualId/trebuchet
 
-cd $visualId
 echo "Adjusting Trebuchet..."
 yes | cp -rf $securegenTrebuchet/res/xml/*.xml $cmTrebuchet/res/xml
 echo "Done."
