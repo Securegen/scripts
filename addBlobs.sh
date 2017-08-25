@@ -26,6 +26,13 @@ if [ ! -d "$securegenBlobs/proprietary_vendor_asus" ]; then
 	echo "Done."
 fi
 
+if [ ! -d "$securegenBlobs/proprietary_vendor_lenovo" ]; then
+        echo "Missing Lenovo blobs."
+        echo "Downloading..."
+        git clone https://github.com/TheMuppets/proprietary_vendor_lenovo.git $securegenBlobs/proprietary_vendor_lenovo
+        echo "Done."
+fi
+
 if [ ! -d "$securegenBlobs/proprietary_vendor_lge" ]; then
 	echo "Missing LG blobs."
 	echo "Downloading..."
@@ -71,6 +78,18 @@ breakfast Z00A
 echo "Done."
 echo "Z00A has been added."
 echo "All Asus blobs have been added."
+
+#Lenovo Blobs
+echo "Adding Lenovo blobs..."
+mkdir -p $cmVendor/lenovo
+
+echo "Adding A6020..."
+breakfast A6020
+cp -n -R $securegenBlobs/proprietary_vendor_lenovo/A6020 $cmVendor/lenovo
+breakfast A6020
+echo "Done."
+echo "A6020 has been addded."
+echo "All Lenovo blobs have been added."
 
 #LG Blobs
 echo "Adding LG blobs..."

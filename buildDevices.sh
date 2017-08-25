@@ -2,6 +2,7 @@
 
 ##VARS##
 asus=('Z00A')
+lenovo=('A6020')
 lg=('d855' 'h815')
 motorola=('peregrine' 'osprey' 'surnia' 'victara' 'harpia' 'falcon' 'lux' 'merlin' 'athene')
 samsung=('klte' 'i9300')
@@ -53,6 +54,7 @@ source build/envsetup.sh
 if [ $# -eq 0 ]; then
 	echo "Building Securegen for all devices - `date +%x` `date +%T`" | tee -a log.txt
 	Build_brand "Asus" ${asus[@]}
+	Build_brand "Lenovo" ${lenovo[@]}
 	Build_brand "LG" ${lg[@]}
 	Build_brand "Motorola" ${motorola[@]}
 	Build_brand "Samsung" ${samsung[@]}
@@ -63,6 +65,9 @@ else
 	input="$@"
 	if input="${input//Asus/ }"; then
 		Build_brand "Asus" ${asus[@]}
+	fi
+	if input="${input//Lenovo/ }"; then
+		Build_brand "Lenovo" ${lenovo[@]}
 	fi
 	if input="${input//LG/ }"; then
 		Build_brand "LG" ${lg[@]}
