@@ -127,6 +127,13 @@ breakfast surnia
 echo "Done."
 echo "surnia has been added."
 
+echo "Adding merlin..."
+breakfast merlin
+cp -n -R $securegenBlobs/proprietary_vendor_motorola/merlin $cmVendor/motorola
+breakfast merlin
+echo "Done."
+echo "merlin has been added."
+
 echo "Adding harpia..."
 breakfast harpia
 cp -n -R $securegenBlobs/proprietary_vendor_motorola/harpia $cmVendor/motorola
