@@ -132,6 +132,13 @@ cp -n -R $securegenBlobs/proprietary_vendor_motorola/victara $cmVendor/motorola
 breakfast victara
 echo "Done."
 echo "victara has been added."
+
+echo "Adding lux..."
+breakfast lux
+cp -n -R $securegenBlobs/proprietary_vendor_motorola/lux $cmVendor/motorola
+breakfast lux
+echo "Done."
+echo "lux has been added."
 echo "All Motorola blobs have been added."
 
 #Samsung Blobs
