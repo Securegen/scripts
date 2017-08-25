@@ -141,6 +141,13 @@ breakfast harpia
 echo "Done."
 echo "harpia has been added."
 
+echo "Adding athene..."
+breakfast athene
+cp -n -R $securegenBlobs/proprietary_vendor_motorola/athene $cmVendor/motorola
+breakfast athene
+echo "Done."
+echo "athene has been added."
+
 echo "Adding victara..."
 breakfast victara
 cp -n -R $securegenBlobs/proprietary_vendor_motorola/victara $cmVendor/motorola

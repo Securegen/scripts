@@ -3,7 +3,7 @@
 ##VARS##
 asus=('Z00A')
 lg=('d855' 'h815')
-motorola=('peregrine' 'osprey' 'surnia' 'victara' 'harpia' 'falcon' 'lux' 'merlin')
+motorola=('peregrine' 'osprey' 'surnia' 'victara' 'harpia' 'falcon' 'lux' 'merlin' 'athene')
 samsung=('klte' 'i9300')
 xiaomi=('gemini')
 builtDevices=""
