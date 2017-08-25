@@ -83,6 +83,14 @@ cp -n -R $securegenBlobs/proprietary_vendor_lge/g3-common $cmVendor/lge
 breakfast d855
 echo "Done."
 echo "d855 has been addded."
+
+echo "Adding h815..."
+breakfast h815
+cp -n -R $securegenBlobs/proprietary_vendor_lge/h815 $cmVendor/lge
+cp -n -R $securegenBlobs/proprietary_vendor_lge/g4-common $cmVendor/lge
+breakfast h815
+echo "Done."
+echo "h815 has been addded."
 echo "All LG blobs have been added."
 
 #Motorola Blobs
