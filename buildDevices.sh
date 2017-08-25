@@ -1,10 +1,11 @@
 #!/bin/bash -e
 
 ##VARS##
+asus=('Z00A')
 lg=('d855')
 motorola=('peregrine' 'osprey' 'surnia' 'victara' 'harpia' 'falcon')
 samsung=('klte' 'i9300')
-asus=('Z00A')
+xiaomi=('gemini')
 builtDevices=""
 ##SRAV##
 
@@ -51,14 +52,18 @@ source build/envsetup.sh
 
 if [ $# -eq 0 ]; then
 	echo "Building Securegen for all devices - `date +%x` `date +%T`" | tee -a log.txt
+	Build_brand "Asus" ${asus[@]}
 	Build_brand "LG" ${lg[@]}
 	Build_brand "Motorola" ${motorola[@]}
 	Build_brand "Samsung" ${samsung[@]}
-	Build_brand "Asus" ${asus[@]}
+	Build_brand "Xiaomi" ${xiaomi[@]}
 	echo -e "Finished building for all devices - `date +%x` `date +%T`\n" | tee -a log.txt
 else
 	echo "Building Securegen for $@ - `date +%x` `date +%T`" | tee -a log.txt
 	input="$@"
+	if input="${input//Asus/ }"; then
+		Build_brand "Asus" ${asus[@]}
+	fi
 	if input="${input//LG/ }"; then
 		Build_brand "LG" ${lg[@]}
 	fi
@@ -66,10 +71,10 @@ else
 		Build_brand "Motorola" ${motorola[@]}
 	fi
 	if input="${input//Samsung/ }"; then
-	        Build_brand "Samsung" ${samsung[@]}
+		Build_brand "Samsung" ${samsung[@]}
 	fi
-	if input="${input//Asus/ }"; then
-	       	Build_brand "Asus" ${asus[@]}
+	if input="${input//Xiaomi/ }"; then
+		Build_brand "Xiaomi" ${xiaomi[@]}
 	fi
 	IFS=' ' read -r -a remainingDevices <<< "$input"
 	for device in "$remainingDevices"; do

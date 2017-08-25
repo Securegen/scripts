@@ -19,6 +19,13 @@ if [ ! -d "$securegenBlobs" ]; then
 	mkdir $securegenBlobs
 fi
 
+if [ ! -d "$securegenBlobs/proprietary_vendor_asus" ]; then
+	echo "Missing Asus blobs."
+	echo "Downloading..."
+	git clone https://github.com/TheMuppets/proprietary_vendor_asus.git $securegenBlobs/proprietary_vendor_asus
+	echo "Done."
+fi
+
 if [ ! -d "$securegenBlobs/proprietary_vendor_lge" ]; then
 	echo "Missing LG blobs."
 	echo "Downloading..."
@@ -40,16 +47,30 @@ if [ ! -d "$securegenBlobs/proprietary_vendor_samsung" ]; then
 	echo "Done."
 fi
 
-if [ ! -d "$securegenBlobs/proprietary_vendor_asus" ]; then
-	echo "Missing Asus blobs."
-	echo "Downloading..."
-	git clone https://github.com/TheMuppets/proprietary_vendor_asus.git $securegenBlobs/proprietary_vendor_asus
-	echo "Done."
+if [ ! -d "$securegenBlobs/proprietary_vendor_xiaomi" ]; then
+        echo "Missing Xiaomi blobs."
+        echo "Downloading..."
+        git clone https://github.com/TheMuppets/proprietary_vendor_xiaomi.git $securegenBlobs/proprietary_vendor_xiaomi
+        echo "Done."
 fi
+
 
 cd $cmHome
 echo "Preparing to add blobs..."
 source build/envsetup.sh
+
+#Asus blobs
+echo "Adding Asus blobs..."
+mkdir -p $cmVendor/asus
+
+echo "Adding Z00A..."
+breakfast Z00A
+cp -n -R $securegenBlobs/proprietary_vendor_asus/mofd-common $cmVendor/asus
+cp -n -R $securegenBlobs/proprietary_vendor_asus/Z00A $cmVendor/asus
+breakfast Z00A
+echo "Done."
+echo "Z00A has been added."
+echo "All Asus blobs have been added."
 
 #LG Blobs
 echo "Adding LG blobs..."
@@ -134,15 +155,15 @@ echo "Done"
 echo "i9300 has been added."
 echo "All Samsung blobs have been added."
 
-#Asus blobs
-echo "Adding Asus blobs..."
-mkdir -p $cmVendor/asus
+#Xiaomi blobs
+echo "Adding Xiaomi blobs..."
+mkdir -p $cmVendor/xiaomi
 
-echo "Adding Z00A..."
-breakfast Z00A
-cp -n -R $securegenBlobs/proprietary_vendor_asus/mofd-common $cmVendor/asus
-cp -n -R $securegenBlobs/proprietary_vendor_asus/Z00A $cmVendor/asus
-breakfast Z00A
+echo "Adding gemini..."
+breakfast gemini
+cp -n -R $securegenBlobs/proprietary_vendor_xiaomi/gemini $cmVendor/xiaomi
+cp -n -R $securegenBlobs/proprietary_vendor_xiaomi/msm8996-common $cmVendor/xiaomi
+breakfast gemini
 echo "Done."
-echo "Z00A has been added."
-echo "All Asus blobs have been added."
+echo "gemini has been added."
+echo "All Xiaomi blobs have been added."
